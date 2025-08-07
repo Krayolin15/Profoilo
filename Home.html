@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Portfolio of Krayolin Kisten</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        body {
+            background-image: url("5651990.webp");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+            color: white;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit;
+        }
+
+        .header {
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .navbar a {
+            font-size: 18px;
+            color: #ededed;
+            text-decoration: none;
+            font-weight: 500;
+            margin: 0 15px;
+            transition: .3s;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: #00BFFF;
+        }
+
+        .content {
+            margin-top: 70px;
+            padding: 20px;
+        }
+
+        .home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            position: relative;
+        }
+
+        .home-content {
+            max-width: 600px;
+        }
+
+        .home-content h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .home-content h3 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #00abf0;
+        }
+
+        .home-content p {
+            font-size: 16px;
+            margin: 20px 0 40px;
+        }
+
+        .btn-box {
+            display: flex;
+            justify-content: space-between;
+            width: 345px;
+            height: 50px;
+        }
+
+        .btn-box a {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 150px;
+            height: 100%;
+            background: #00abf0;
+            border: 2px solid #00abf0;
+            border-radius: 8px;
+            font-size: 19px;
+            color: #081b29;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            z-index: 1;
+            overflow: hidden;
+            transition: .5s;
+        }
+
+        .btn-box a:nth-child(2) {
+            background: transparent;
+            color: #00abf0;
+        }
+
+        .btn-box a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: #081b29;
+            z-index: -1;
+            transition: .5s;
+        }
+
+        .btn-box a:hover::before {
+            width: 100%;
+        }
+
+        .btn-box a:nth-child(2)::before {
+            background: #00abf0;
+        }
+
+        .btn-box a:nth-child(2):hover {
+            color: #081b29;
+        }
+
+        .home-sci {
+            position: absolute;
+            bottom: 40px;
+            width: 170px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .home-sci a {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: 2px solid #00abf0;
+            border-radius: 50%;
+            font-size: 20px;
+            color: #00abf0;
+            text-decoration: none;
+            z-index: 1;
+            overflow: hidden;
+            transition: .5s;
+        }
+
+        .home-sci a:hover {
+            color: #081b29;
+        }
+
+        .home-sci a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: #00abf0;
+            z-index: -1;
+            transition: .5s;
+        }
+
+        .home-sci a:hover::before {
+            width: 100%;
+        }
+
+        .about {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 2rem;
+            padding-bottom: 6rem;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .heading {
+            font-size: 5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .me {
+            color: #00abf0;
+        }
+
+        .about-img {
+            position: relative;
+            width: 25rem;
+            height: 25rem;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-img img {
+            width: 90%;
+            border-radius: 50%;
+            border: .2rem solid #00abf0;
+        }
+
+        .about-img .circle-spin {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border-top: .2rem solid rgba(0, 0, 0, 0.7);
+            border-bottom: .2rem solid rgba(0, 0, 0, 0.7);
+            border-left: .2rem solid #00abf0;
+            border-right: .2rem solid #00abf0;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        .about-content {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .about-content p {
+            margin: 1rem 0;
+        }
+
+        .about-content h3 {
+            font-size: 2.6rem;
+        }
+
+        .about-content p {
+            font-size: 1.6rem;
+            margin: 2rem 0 3rem;
+        }
+
+        .btn-box.btns {
+            display: inline-block;
+            width: 15rem;
+        }
+
+        .education {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: auto; /* Consider removing this if it has no effect */
+    padding-bottom: 5rem;
+}
+
+.education-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem; /* Adjusts space between columns */
+}
+
+.education-column {
+    flex: 1 1 40rem; /* Sets the base size for each column */
+}
+
+.title {
+    font-size: 2.5rem;
+    margin: 0 0 1.5rem 2rem; /* Ensures proper spacing for title */
+}
+
+.education {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: auto;
+            padding-bottom: 5rem;
+        }
+
+        .education .education-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5rem;
+        }
+
+        .education-row .education-column {
+            flex: 1 1 40rem;
+        }
+
+        .education-column .title {
+            font-size: 2.5rem;
+            margin: 0 0 1.5rem 2rem;
+        }
+
+        .education-column .education-box {
+            border-left: .2rem solid #00abf0;
+            padding-left: 1rem;
+        }
+
+        .education .education-content {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .education-content .content {
+            position: relative;
+            padding: 1.5rem;
+            border: .2rem solid #00abf0;
+            border-radius: .6rem;
+            margin-bottom: 2rem;
+        }
+
+
+        .skills {
+    padding: 2rem; /* Add padding around the skills section */
+}
+
+.skills h2 {
+    text-align: center; /* Center the heading */
+    font-size: 2.5rem; /* Font size for the main heading */
+    margin-bottom: 2rem; /* Space below the heading */
+}
+
+.skills-container {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: space-around; /* Space items evenly */
+}
+
+.skills-category {
+    flex: 1 1 25%; /* Flex-grow, flex-shrink, and basis for responsive layout */
+    margin: 1rem; /* Margin around each category */
+    padding: 1rem; /* Inner padding for categories */
+    border: 2px solid #00abf0; /* Thicker blue border color */
+    border-radius: 0.6rem; /* Rounded corners */
+    background-color: transparent; /* Set background to transparent */
+    box-shadow: none; /* Remove shadow for cleaner look with transparency */
+    transition: transform 0.3s; /* Smooth transition for hover effect */
+}
+
+.skills-category:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+}
+
+.skills-category h3 {
+    font-size: 1.8rem; /* Font size for category heading */
+    margin-bottom: 1rem; /* Space below category heading */
+}
+
+.skills-category ul {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.skills-category li {
+    margin-bottom: 0.5rem; /* Space between skills */
+    font-size: 1.2rem; /* Font size for individual skills */
+    line-height: 1.5; /* Line height for better readability */
+    color: #333; /* Text color */
+}
+
+        .progress h3 {
+            font-size: 1.7rem;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: .5rem;
+            color: white;
+        }
+
+        .progress h3 span {
+            color: #00abf0;
+        }
+
+        .bar {
+            height: 2.5rem;
+            border-radius: 6rem;
+            border: .2rem solid #00abf0;
+            padding: .5rem;
+            margin: 1rem 0;
+        }
+
+        .bar span {
+            display: block;
+            height: 100%;
+            border-radius: .3rem;
+            background: #00abf0;
+        }
+		   .contact {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 50px 10%;
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .contact-info div {
+            text-align: center;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            font-size: 1.2rem;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        footer p {
+            margin: 0;
+        }
+        .achievements {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 50px 0;
+    color: white;
+    text-align: center;
+}
+
+.achievements .heading {
+    font-size: 5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: white;
+}
+
+.achievements-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5rem;
+    margin-top: 30px;
+}
+
+.achievements-column {
+    flex: 1 1 40%;
+    text-align: left;
+}
+
+.achievements-box {
+    border-left: .2rem solid #00abf0;
+    padding-left: 1rem;
+}
+
+.achievements-content {
+    margin-top: 1rem;
+}
+
+.achievements .content {
+    position: relative;
+    padding: 1.5rem;
+    border: .2rem solid #00abf0;
+    border-radius: .6rem;
+    margin-bottom: 2rem;
+}
+
+.achievements .content .year {
+    font-size: 1.4rem;
+    color: #00abf0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
+ </style> 		
+                                				
+</head>                                
+                                   
+								   
+                                				
+
+<body>
+    <header class="header" >
+        <a href="#home" class="logo">Krayolin.</a>
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+            <a href="#achievements">Achievements</a> 
+        </nav>
+    </header>
+    <div class="content"></div>
+    <section class="home" id="home">
+        <div class="home-content">
+            <div>
+                <h1>Hi, I'm Krayolin Kisten</h1>
+            </div>
+            <h3>An inspired tech enthusiast in the field of web development</h3>
+            <p>As a passionate tech enthusiast currently in my first year at Richfield College, I am dedicated to mastering the art of web development. My journey in this dynamic field is driven by a keen interest in creating innovative and user-friendly web solutions. Through my coursework and hands-on projects, I am honing my skills in HTML, CSS, JavaScript, and various web development frameworks. I am excited to continue learning, collaborating, and contributing to the ever-evolving world of web development.</p>
+            <div class="btn-box">
+                <a href="new 1.html">Achievements</a>
+                <a href="mailto:Krayolinkisten7@gmail@gmail.com">Let's Talk</a>
+            </div>
+        </div>
+        <div class="home-sci">
+            <a href="https://www.facebook.com/krayolin.kisten.58/"><i class='bx bxl-facebook'></i></a>
+            <a href="https://x.com/KrayolinK928"><i class='bx bxl-twitter'></i></a>
+            <a href="https://www.instagram.com/krayolin15/"><i class='bx bxl-instagram'></i></a>
+            <a href="https://www.linkedin.com/in/krayolin-kisten-8b4075202/"><i class='bx bxl-linkedin'></i></a>
+        </div>
+    </section>
+    <section class="about" id="about">
+        <h2 class="heading">About <span class="me">Me</span></h2>
+        <div class="about-img">
+            <img src="IMG_20230827_124056_086.jpg" alt="Krayolin Kisten">
+            <span class="circle-spin"></span>
+        </div>
+        <div class="about-content">
+            <h3>About Me?</h3>
+            <p>As a passionate tech enthusiast currently in my first year at Richfield College, I am dedicated to mastering the art of web development. My journey in this dynamic field is driven by a keen interest in creating innovative and user-friendly web solutions. Through my coursework and hands-on projects, I am honing my skills in HTML, CSS, JavaScript, and various web development frameworks. I am excited to continue learning, collaborating, and contributing to the ever-evolving world of web development.</p>
+            <div class="btn-box btns">
+                <a href="Krayolin-Kisten_CV (3) - for merge.docx" download="Krayolin-Kisten_CV (3) - for merge.docx" >Download CV</a>
+            </div>
+        </div>
+        <section class="education" id="education">
+            <h2 class="heading">My <span class="me">Journey</span></h2>
+            <div class="education-row">
+                <div class="education-column">
+                    <h3 class="title">Education</h3>
+                    <div class="education-box">
+                        <div class="education-content">
+                            <div class="content">
+                                <div class="year"><i class='bx bxs-calendar'></i> 2028 (Expected)</div>
+                                <h3>Bachelor of Science in Information Technology</h3>
+                                <p>Richfield Graduate Institute of Technology, Umhlanga Campus, South Africa</p>
+                            </div>
+                            <div class="content">
+                                <div class="year"><i class='bx bxs-calendar'></i> 2024 - Present</div>
+                                <h3>Higher Certificate in Information Technology</h3>
+                                <p>Richfield Graduate Institute of Technology, Umhlanga Campus, South Africa</p>
+                            </div>
+                            <div class="content">
+                                <div class="year"><i class='bx bxs-calendar'></i> 2019 - 2023</div>
+                                <h3>High School (Grade 12)</h3>
+                                <p>Greenbury Secondary School</p>
+                                <p>Subjects: English, Afrikaans, Pure Mathematics, Physical Science, Accounting, Information Technology</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="education-column">
+                    <h3 class="title">Experience</h3>
+                    <div class="education-box">
+                        <div class="education-content">
+                            <div class="content">
+                                <div class="year"><i class='bx bxs-calendar'></i> Oct - Present</div>
+                                <h3>Intern - Quality Control & Assurance</h3>
+                                <p>Toyoda Gosei</p>
+                                <p>Assisted in automating processes, conducted data analysis, and supported real-time reporting configurations.</p>
+                            </div>
+                            <div class="content">
+                                <div class="year"><i class='bx bxs-calendar'></i> Sep - Oct 2024</div>
+                                <h3>Freelance Developer</h3>
+                                <p>Developed a Delphi 2010 software application on exoplanets for a Practical Assessment Task (PAT).</p>
+                            </div>
+                            <div class="content">
+                                <div class="year"><i class='bx bxs-calendar'></i> Oct 2024 - Present</div>
+                                <h3>IT Tutor</h3>
+                                <p>Provide programming lessons in Delphi 2010 for a Grade 10 student, creating custom lesson plans.</p>
+                            </div>
+                            <div class="content">
+                                <div class="year"><i class='bx bxs-calendar'></i> Jul - Sep 2024</div>
+                                <h3>Social Media Manager</h3>
+                                <p>Tamrin Online Store</p>
+                                <p>Managed social media platforms, increased engagement by 30%, and facilitated sales growth through product content.</p>
+                            </div>
+                            <div class="content">
+                                <div class="year"><i class='bx bxs-calendar'></i> Apr 2023 - Jul 2024</div>
+                                <h3>Customer Service Representative</h3>
+                                <p>CCI</p>
+                                <p>Provided technical support, account management, and consistently met performance targets.</p>
+                            </div>
+                            <div class="content">
+                                <div class="year"><i class='bx bxs-calendar'></i> 2024</div>
+                                <h3>Electronic Officer</h3>
+                                <p>IEC South Africa Elections</p>
+                                <p>Set up and maintained electronic voting machines and assisted voters during the elections.</p>
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="achievements" id="achievements">
+            <h2 class="heading">Achievements & <span class="me">Certifications</span></h2>
+            <div class="achievements-row">
+                <div class="achievements-column">
+                    <h3 class="title">Achievements</h3>
+                    <div class="achievements-box">
+                        <div class="achievements-content">
+                            <div class="content">
+                                <div class="year"><i class='bx bxs-trophy'></i> 2023</div>
+                                <h3>Prefect</h3>
+                                <p>Served as a Prefect at Greenbury Secondary School, demonstrating leadership and responsibility.</p>
+                            </div>
+                            <div class="content">
+                                <div class="year"><i class='bx bxs-trophy'></i> 2019 - 2023</div>
+                                <h3>Rotary Club Member</h3>
+                                <p>Member of the Rotary Club at Greenbury Secondary School, contributing to community service and school events.</p>
+                            </div>
+                            <div class="content">
+                                <div class="year"><i class='bx bxs-badge-check'></i> Learner's License</div>
+                                <p>Obtained Learner's License at Verulam Testing Grounds.</p>
+                            </div>
+                        </div>
+                          <div class="content">
+                                <div class="year"><i class='bx bxs-trophy'></i> FNB App Academy</div>
+                                <p> Full Stack Developers </p>
+                                <p>I successfully completed the FNB App Academy certification, gaining practical knowledge and hands-on experience in digital banking and app-based financial solutions.</p>
+                            </div>
+                    </div>
+                </div>
+                <div class="achievements-column">
+                    <h3 class="title">Certifications</h3>
+                    <div class="achievements-box">
+                        <div class="achievements-content">
+                            <div class="content">
+                                <div class="year"><i class='bx bxs-certification'></i> CompTIA A+</div>
+                                <p>Self-taught and completed an online CompTIA A+ certification course to enhance IT foundational knowledge.</p>
+                            </div>
+                            <div class="content">
+                                <div class="year"><i class='bx bxs-certification'></i> G-Code & M-Code CNC Programming</div>
+                                <p>Certification in Computer Numerical Control (CNC) Programming through Udemy, specializing in G-Code and M-Code.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skills-category">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>Delphi 2010</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h3>Web Development</h3>
+                    <ul>
+                        <li>Responsive Web Design</li>
+                        <li>SP Page Builder</li>
+                        <li>Joomla</li>
+                        <li>Version Control (Git)</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h3>Software & Tools</h3>
+                    <ul>
+                        <li>Microsoft Office Suite</li>
+                        <li>Adobe Photoshop (Basic)</li>
+                        <li>Visual Studio Code</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h3>Soft Skills</h3>
+                    <ul>
+                        <li>Problem Solving</li>
+                        <li>Effective Communication</li>
+                        <li>Team Collaboration</li>
+                        <li>Time Management</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+                
+                <section class="contact" id="contact">
+            <h2>Contact Me</h2>
+            <p> Feel free to contact me through the details below.</p>
+            <div class="contact-info">
+                <div>
+                    <h3>Email</h3>
+                    <p>Krayolinkisten7@gmail.com</p>
+                </div>
+                <div>
+                    <h3>Phone</h3>
+                    <p>+27 67 342 9856</p>
+                </div>
+                <div>
+                    <h3>Location</h3>
+                    <p>Durban, South Africa</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Krayolin Kisten. All Rights Reserved.</p>
+    </footer>
+				   
+                  				 
+</body>
+
+</html>
